@@ -16,13 +16,34 @@ namespace FoodStock.Controllers
         private StockContext db = new StockContext();
 
         // GET: Menus
-        public ActionResult Index()
+        public ActionResult Index(string food, string sortBy)
         {
-            var searchItem = db.Menus.ToList();
+            var foodlist = db.Menus.Select(s=>s);
 
-            //the following will sort the Menu item alphabetically.
-            //return View(db.Menus.OrderBy(c => c.FoodName).ToList());
-            return View(searchItem.OrderBy(c => c.FoodName));
+            //by default the food items are listed by an alphabetical order,
+            //unless the user request to view the order by price
+            foodlist = foodlist.OrderBy(c => c.FoodName);
+
+            //the follwing is used to filter menu by a particular food name.
+            if (!String.IsNullOrEmpty(food))
+            {
+                foodlist = foodlist.Where(p => p.FoodName.Contains(food));
+            }
+
+            //sort the food meu items based on the price
+            switch (sortBy)
+            {
+                case "price_lowest":
+                    foodlist = foodlist.OrderBy(p => p.Price);
+                    break;
+                case "price_highest":
+                    foodlist = foodlist.OrderByDescending(p => p.Price);
+                    break;
+                default:
+                    break;
+            }
+
+            return View(foodlist.ToList());
         }
 
         // GET: Menus/Details/5

@@ -111,3 +111,7 @@ C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\M
 C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.StringFoodName.resources
 C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.revertback.resources
 C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.foodname.resources
+C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.DtoFKadded.resources
+C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.DateFormat.resources
+C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.InputFormat.resources
+C:\Users\jalaluddin\Desktop\Humber 11491\5204-Mobile-Dev-CHRISTINE\ASSIGNMENTS\MVPBook\FoodStock\obj\Debug\FoodStock.Migrations.Regex.resources

@@ -7,8 +7,40 @@
 <h2>List of Food Items in the Menu</h2>
 
 <p>
-    @Html.ActionLink("Create New Menu Item", "Create")
+    <ul class="nav navbar-nav navbar-right">
+    @using (Html.BeginForm("Index", "Menus", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+    {
+        <p>Sort the Result Based on Price</p>
+        <input type="radio" id="price_lowest" name="sortBy" value="price_lowest">
+        <label for="price_lowest">Lowest</label><br>
+        <input type="radio" id="price_highest" name="sortBy" value="price_highest">
+        <label for="price_highest">Highest</label><br>
+        <button type="submit" class="btn btn-success navbar-right">Submit</button>
+    }
+    </ul>
 </p>
+
+<p><img src="~/Content/images/restaurant-menu.jpg" alt="Photo by Ryutaro Tsukata from Pexels" /></p>
+
+<p>
+    @using (Html.BeginForm("Index", "Menus", FormMethod.Get, new { @class = "navbar-form navbar-left" }))
+    {
+        <div class="form-group">
+            @Html.TextBox("food", null, new { @class = "form-control", @placeholder = "Search Menu by food" })
+        </div>
+        <button type="submit" class="btn btn-default ">Submit</button>
+    }
+
+    <ul class="nav navbar-nav navbar-right">
+        <button type="submit" class="btn btn-toolbar">@Html.ActionLink("Create New Food-Item", "Create")</button>
+    </ul>
+</p>
+
+
+
+
+
+
 <table class="table">
     <tr>
         <th>
@@ -23,23 +55,26 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoodName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FoodName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+

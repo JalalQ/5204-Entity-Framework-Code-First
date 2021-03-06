@@ -16,15 +16,27 @@ namespace FoodStock.Controllers
         private StockContext db = new StockContext();
 
         // GET: Orders
-        public ActionResult Index(string person)
+        public ActionResult Index(string person, string Menu)
         {
             var orders = db.Orders.Include(p => p.Menu);
 
-            //the follwing is used to filter order ordered by a particular person.
+            //the follwing is used to search orders which have been ordered by a particular person.
             if (!String.IsNullOrEmpty(person))
             {
                 orders = orders.Where(p => p.OrderedBy.Contains(person));
             }
+
+            var foodList = orders.OrderBy(p => p.Menu.FoodName).Select(p => p.Menu.FoodName).Distinct();
+
+            //Filter process
+            if (!String.IsNullOrEmpty(Menu))
+            {
+                orders = orders.Where(p => p.Menu.FoodName.Contains(Menu));
+                ViewBag.Menu = Menu;
+            }
+
+            ViewBag.Menu = new SelectList(foodList);
+
             return View(orders.ToList());
         }
 
