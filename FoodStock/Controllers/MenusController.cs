@@ -16,6 +16,7 @@ namespace FoodStock.Controllers
         private StockContext db = new StockContext();
 
         // GET: Menus
+        // The input parameters "food" and "sortBy" is provided from the form in index view file.
         public ActionResult Index(string food, string sortBy)
         {
             var foodlist = db.Menus.Select(s=>s);
@@ -25,12 +26,13 @@ namespace FoodStock.Controllers
             foodlist = foodlist.OrderBy(c => c.FoodName);
 
             //the follwing is used to filter menu by a particular food name.
+            //when the user "Search Menu by food".
             if (!String.IsNullOrEmpty(food))
             {
                 foodlist = foodlist.Where(p => p.FoodName.Contains(food));
             }
 
-            //sort the food meu items based on the price
+            //sort the food menu items based on the price
             switch (sortBy)
             {
                 case "price_lowest":
@@ -47,6 +49,9 @@ namespace FoodStock.Controllers
         }
 
         // GET: Menus/Details/5
+        // Question mark indicate it is a nullable variable, and optional, 
+        // in which case a Bad Request Status from the Server would be returned.
+        // If the ? is not used an error message during compile would be generated.
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -70,6 +75,8 @@ namespace FoodStock.Controllers
         // POST: Menus/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // The HTTP POST method sends data to the server. 
+        // Prevent Cross-Site Request Forgery (XSRF/CSRF) attacks.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,FoodName,Price")] Menu menu)
@@ -131,6 +138,7 @@ namespace FoodStock.Controllers
         }
 
         // POST: Menus/Delete/5
+        // After the user has clicked on the Delete Button.
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
